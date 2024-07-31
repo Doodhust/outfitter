@@ -84,8 +84,6 @@ x-airflow-common:
       condition: service_healthy
     postgres:
       condition: service_healthy
-  networks:
-      - shared-network
 
 services:
   postgres:
@@ -102,8 +100,6 @@ services:
       retries: 5
       start_period: 5s
     restart: always
-    networks:
-      - shared-network
 
   redis:
     # Redis is limited to 7.2-bookworm due to licencing change
@@ -118,8 +114,6 @@ services:
       retries: 50
       start_period: 30s
     restart: always
-    networks:
-      - shared-network
 
   airflow-webserver:
     <<: *airflow-common
@@ -137,8 +131,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - shared-network
 
   airflow-scheduler:
     <<: *airflow-common
@@ -154,8 +146,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - shared-network
 
   airflow-worker:
     <<: *airflow-common
@@ -179,8 +169,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - shared-network
 
   airflow-triggerer:
     <<: *airflow-common
@@ -196,8 +184,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - shared-network
 
   airflow-init:
     <<: *airflow-common
@@ -262,8 +248,6 @@ services:
     user: "0:0"
     volumes:
       - ${AIRFLOW_PROJ_DIR:-.}:/sources
-    networks:
-      - shared-network
 
   airflow-cli:
     <<: *airflow-common
@@ -277,8 +261,6 @@ services:
       - bash
       - -c
       - airflow
-    networks:
-      - shared-network
 
   # You can enable flower by adding "--profile flower" option e.g. docker-compose --profile flower up
   # or by explicitly targeted on the command line e.g. docker-compose up flower.
@@ -301,13 +283,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - shared-network
 
 volumes:
   postgres-db-volume:
-
-networks:
-       shared-network:
-         name: shared-network
-         driver: bridge
