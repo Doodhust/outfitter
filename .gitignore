@@ -1,1 +1,10 @@
-src/db/images/*
+src/db/images/*.jpg
+src/db/images/*.jpeg
+src/db/images/*.png
+src/db/images/*.gif
+
+venv/*
+
+src/db/vectors/*
+
+src/vectorize/__pycache__/*

@@ -6,7 +6,7 @@ import os
 fclip = FashionCLIP('fashion-clip')
 
 if __name__ == "__main__":
-    img_path = '/home/kris/code/uni/outfitter/outfitter/src/db/fashiers'
+    img_path = '/home/kris/code/uni/outfitter/outfitter/src/db/images'
     vector_path = '/home/kris/code/uni/outfitter/outfitter/src/db/vectors'
 
     image_files = [os.path.join(img_path, f) for f in os.listdir(img_path) if f.endswith(('.jpeg', '.jpg', '.png'))]
