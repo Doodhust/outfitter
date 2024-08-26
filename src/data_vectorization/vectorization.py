@@ -23,4 +23,3 @@ def vectorize(images, fclip, save_folder):
         vector_filename = os.path.splitext(img_name)[0] + '.npy'
         vector_path = os.path.join(save_folder, vector_filename)
         np.save(vector_path, vector_filename)
-

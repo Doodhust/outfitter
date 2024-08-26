@@ -1,15 +1,9 @@
 from icrawler.builtin import GoogleImageCrawler
 
-google_Crawler = GoogleImageCrawler(storage={'root_dir': '/home/doodhust/sourse/data'})
+google_Crawler = GoogleImageCrawler(storage={'root_dir': '/home/doodhust/sourse/new_summer_project_DNS/data/test'})
 
 # Определяем ключевые слова и источник
-keyword = 'dresses'
-source = 'fashiers.com'
+keyword = 'clothes without women'
 
-# Создаем фильтр для поиска изображений с указанным источником
-filters = dict(
-    source=f'.*{source}.*'
-)
 
-# Запускаем загрузку изображений с применением фильтра
-google_Crawler.crawl(keyword=keyword, max_num=5, filters=filters)
+google_Crawler.crawl(keyword=keyword, max_num=10)
