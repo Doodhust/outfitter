@@ -1,7 +1,7 @@
 from pymilvus import Milvus, IndexType, Collection
 import numpy as np
 import os
-from milvus_functions import connect_to_milvus, create_collection, create_index, find_nearest_outfits
+from milvus_functions import connect_to_milvus, compdiv
 
 connect_to_milvus()
 
@@ -24,7 +24,7 @@ for filename in os.listdir(data_dir):
             break
 
 
-print(find_nearest_outfits(vector1, vector2))
+compdiv(vector1, vector2)
 
 
 
